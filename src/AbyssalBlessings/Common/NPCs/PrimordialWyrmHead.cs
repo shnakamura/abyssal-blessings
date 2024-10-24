@@ -2,12 +2,7 @@ using AbyssalBlessings.Content.Items.Consumables;
 using AbyssalBlessings.Content.Items.Materials;
 using AbyssalBlessings.Content.Items.Weapons.Melee;
 using AbyssalBlessings.Content.Items.Weapons.Rogue;
-using CalamityMod.Particles;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;
 using Terraria.GameContent.ItemDropRules;
-using Terraria.ModLoader;
 
 namespace AbyssalBlessings.Common.NPCs;
 

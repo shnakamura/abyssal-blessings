@@ -9,9 +9,6 @@ namespace AbyssalBlessings;
 
 public sealed class AbyssalBlessings : Mod
 {
-    /// <summary>
-    ///     The packet Id for syncing <see cref="EidolicHeart"/> stat changes of a <see cref="Player"/>.
-    /// </summary>
     public const byte SyncEidolicHeart = 0;
 
     public override void HandlePacket(BinaryReader reader, int whoAmI) {
