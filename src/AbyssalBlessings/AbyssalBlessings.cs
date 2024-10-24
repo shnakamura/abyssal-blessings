@@ -1,35 +1,15 @@
-using System.IO;
-using AbyssalBlessings.Common.Players;
+using AbyssalBlessings.Core.IO;
+using ReLogic.Content.Sources;
 
 namespace AbyssalBlessings;
 
 public sealed class AbyssalBlessings : Mod
 {
-    public const byte SyncEidolicHeart = 0;
+    public override IContentSource CreateDefaultContentSource() {
+        var source = new RedirectContentSource(base.CreateDefaultContentSource());
 
-    public override void HandlePacket(BinaryReader reader, int whoAmI) {
-        var id = reader.ReadByte();
+        source.AddRedirect("Content", "Assets/Textures");
 
-        switch (id) {
-            case SyncEidolicHeart:
-                var index = reader.ReadByte();
-                var amount = reader.ReadByte();
-
-                var player = Main.player[index];
-
-                if (!player.TryGetModPlayer(out PlayerEidolicHearts modPlayer)) {
-                    return;
-                }
-
-                modPlayer.EidolicHeartsConsumed = amount;
-
-                if (Main.netMode != NetmodeID.Server) {
-                    return;
-                }
-
-                modPlayer.SyncPlayer(-1, whoAmI, false);
-
-                break;
-        }
+        return source;
     }
 }

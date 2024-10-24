@@ -7,4 +7,10 @@
         <TargetFramework>net8.0</TargetFramework>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Reference Include="CalamityMod">
+        <HintPath>lib\CalamityMod.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
 </Project>
