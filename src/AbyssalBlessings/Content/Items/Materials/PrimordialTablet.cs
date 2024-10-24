@@ -1,6 +1,4 @@
 using AbyssalBlessings.Content.Rarities;
-using Terraria;
-using Terraria.ModLoader;
 
 namespace AbyssalBlessings.Content.Items.Materials;
 

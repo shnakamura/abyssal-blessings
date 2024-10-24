@@ -1,8 +1,3 @@
-using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-
 namespace AbyssalBlessings.Content.Items.Weapons.Melee;
 
 public class Mariana : ModItem

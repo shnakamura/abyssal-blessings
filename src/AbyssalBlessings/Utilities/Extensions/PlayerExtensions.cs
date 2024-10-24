@@ -1,5 +1,3 @@
-using Terraria;
-
 namespace AbyssalBlessings.Utilities.Extensions;
 
 /// <summary>

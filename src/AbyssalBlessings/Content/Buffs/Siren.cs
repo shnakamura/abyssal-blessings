@@ -1,6 +1,3 @@
-using Terraria;
-using Terraria.ModLoader;
-
 namespace AbyssalBlessings.Content.Buffs;
 
 public class Siren : ModBuff

@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using AbyssalBlessings.Content.Items.Accessories;
-using Terraria;
-using Terraria.ModLoader;
 
 namespace AbyssalBlessings.Common.Players;
 

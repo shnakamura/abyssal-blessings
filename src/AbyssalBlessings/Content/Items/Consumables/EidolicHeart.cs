@@ -1,12 +1,6 @@
 using AbyssalBlessings.Common.Players;
 using AbyssalBlessings.Content.Items.Materials;
 using AbyssalBlessings.Content.Rarities;
-using CalamityMod.CalPlayer;
-using CalamityMod.Items.Materials;
-using CalamityMod.Tiles.Furniture.CraftingStations;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace AbyssalBlessings.Content.Items.Consumables;
 

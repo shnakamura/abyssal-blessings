@@ -1,6 +1,3 @@
-using CalamityMod.Items.LoreItems;
-using Terraria.ModLoader;
-
 namespace AbyssalBlessings.Content.Items.Lore;
 
 public class SilvaLore : LoreItem, ILocalizedModType

@@ -1,9 +1,4 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;
 using Terraria.GameContent;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace AbyssalBlessings.Content.Projectiles.Pets;
 
@@ -34,7 +29,7 @@ public class ZephyrSquid : ModProjectile
     }
 
     public override void AI() {
-        Projectile.alpha = (int)MathHelper.Clamp(Projectile.alpha, 0, 255);
+        Projectile.alpha = MathHelper.Clamp(Projectile.alpha, 0, 255);
 
         scale = Vector2.SmoothStep(scale, Vector2.One, 0.2f);
 

@@ -1,10 +1,8 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
 namespace AbyssalBlessings.Common.Graphics.Particles;
 
 public abstract class Particle
 {
+    public virtual string Texture => GetType().FullName.Replace('.', '/');
     public float Alpha = 1f;
 
     public Color Color = Color.White;
@@ -16,14 +14,12 @@ public abstract class Particle
 
     public Vector2 Velocity;
 
-    public virtual string Texture => GetType().FullName.Replace('.', '/');
-
     public void Kill() {
         ParticleManager.Kill(this);
     }
-    
+
     public virtual void OnCreate() { }
-    
+
     public virtual void OnKill() { }
 
     public virtual void OnUpdate() { }
@@ -31,6 +27,6 @@ public abstract class Particle
     public virtual bool PreDraw() {
         return true;
     }
-    
+
     public virtual void PostDraw() { }
 }

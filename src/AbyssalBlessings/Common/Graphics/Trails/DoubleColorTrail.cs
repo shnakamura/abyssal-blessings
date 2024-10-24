@@ -1,6 +1,3 @@
-using System;
-using Microsoft.Xna.Framework;
-using Terraria;
 using Terraria.Graphics;
 using Terraria.Graphics.Shaders;
 
@@ -9,21 +6,21 @@ namespace AbyssalBlessings.Common.Graphics.Trails;
 public struct DoubleColorTrail : ITrail
 {
     private static readonly VertexStrip Strip = new();
-    
+
     public delegate float TrailWidthCallback(float progress);
-    
+
     public delegate Color TrailColorCallback(float progress);
-    
+
     public Projectile Projectile { get; }
 
     public Color Start { get; }
     public Color End { get; }
-    
+
     public TrailWidthCallback? WidthCallback { get; }
     public TrailColorCallback? ColorCallback { get; }
 
     public DoubleColorTrail(
-        Projectile projectile, 
+        Projectile projectile,
         Color start,
         Color end,
         TrailWidthCallback? widthCallback = null,
@@ -35,17 +32,17 @@ public struct DoubleColorTrail : ITrail
         WidthCallback = widthCallback;
         ColorCallback = colorCallback;
     }
-    
+
     public void Draw() {
         if (Projectile == null || !Projectile.active) {
             return;
         }
-        
+
         var data = GameShaders.Misc["RainbowRod"];
 
         data.UseSaturation(-2.8f);
         data.UseOpacity(2f);
-        
+
         data.Apply();
 
         Strip.PrepareStrip(
@@ -55,12 +52,12 @@ public struct DoubleColorTrail : ITrail
             GetStripWidth,
             -Main.screenPosition + Projectile.Size / 2f
         );
-        
+
         Strip.DrawTrail();
-        
+
         Main.pixelShader.CurrentTechnique.Passes[0].Apply();
     }
-    
+
     private Color GetStripColor(float progress) {
         var interpolation = Color.Lerp(
             Start,
@@ -69,13 +66,13 @@ public struct DoubleColorTrail : ITrail
         );
 
         var color = Projectile.GetAlpha(ColorCallback?.Invoke(progress) ?? interpolation * (1f - progress));
-        
+
         return color;
     }
 
     private float GetStripWidth(float progress) {
-        var width = WidthCallback?.Invoke(progress) ?? (1f - progress);
-        
+        var width = WidthCallback?.Invoke(progress) ?? 1f - progress;
+
         return width;
     }
 }

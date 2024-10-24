@@ -1,6 +1,3 @@
-using Terraria;
-using Terraria.ModLoader;
-
 namespace AbyssalBlessings.Content.Items.Placeables.Trophies;
 
 public class SilvaTrophy : ModItem

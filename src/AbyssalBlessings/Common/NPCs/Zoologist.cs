@@ -1,8 +1,4 @@
 using AbyssalBlessings.Content.Items.Accessories;
-using CalamityMod;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace AbyssalBlessings.Common.NPCs;
 

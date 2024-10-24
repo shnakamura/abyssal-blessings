@@ -1,9 +1,5 @@
 using System.Collections.Generic;
 using AbyssalBlessings.Common.Graphics.Renderers;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;
-using Terraria.ModLoader;
 
 namespace AbyssalBlessings.Common.Graphics.Particles;
 
@@ -11,16 +7,16 @@ namespace AbyssalBlessings.Common.Graphics.Particles;
 public sealed class ParticleManager : ModSystem
 {
     public static List<Particle> Particles { get; } = new();
-    
+
     public static void Create<T>(T particle) where T : Particle {
         particle.OnCreate();
-        
+
         Particles.Add(particle);
     }
 
     public static void Kill<T>(T particle) where T : Particle {
         particle.OnKill();
-        
+
         Particles.Remove(particle);
     }
 
@@ -48,20 +44,20 @@ public sealed class ParticleManager : ModSystem
             PixellatedRenderer.Queue(
                 () => {
                     var result = particle.PreDraw();
-                    
+
                     if (result) {
                         Main.EntitySpriteDraw(
-                            texture, 
-                            particle.Position - Main.screenPosition / 2f, 
-                            null, 
-                            particle.Color * particle.Alpha, 
+                            texture,
+                            particle.Position - Main.screenPosition / 2f,
+                            null,
+                            particle.Color * particle.Alpha,
                             particle.Rotation,
                             texture.Size() / 2f,
-                            particle.Scale, 
+                            particle.Scale,
                             SpriteEffects.None
                         );
                     }
-                    
+
                     particle.PostDraw();
                 }
             );

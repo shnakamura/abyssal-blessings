@@ -1,10 +1,4 @@
-using System;
-using CalamityMod;
-using Microsoft.Xna.Framework;
-using Terraria;
 using Terraria.Audio;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace AbyssalBlessings.Content.Projectiles.Melee;
 

@@ -1,6 +1,3 @@
-using CalamityMod.Tiles.BaseTiles;
-using Terraria.ModLoader;
-
 namespace AbyssalBlessings.Content.Tiles.Relics;
 
 public class SilvaRelic : BaseBossRelic

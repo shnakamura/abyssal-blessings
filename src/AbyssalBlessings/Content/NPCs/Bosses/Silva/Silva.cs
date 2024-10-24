@@ -1,5 +1,3 @@
-using Terraria.ModLoader;
-
 namespace AbyssalBlessings.Content.NPCs.Bosses.Silva;
 
 [AutoloadBossHead]

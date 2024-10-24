@@ -1,6 +1,4 @@
 using AbyssalBlessings.Content.Projectiles.Pets;
-using Terraria;
-using Terraria.ModLoader;
 
 namespace AbyssalBlessings.Common.Players;
 

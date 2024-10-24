@@ -1,7 +1,4 @@
 using AbyssalBlessings.Content.Rarities;
-using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ModLoader;
 
 namespace AbyssalBlessings.Content.Items.Weapons.Summoner;
 

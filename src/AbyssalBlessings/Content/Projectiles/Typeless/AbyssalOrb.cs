@@ -1,16 +1,7 @@
-using System;
-using AbyssalBlessings.Common.Graphics;
 using AbyssalBlessings.Common.Graphics.Renderers;
 using AbyssalBlessings.Common.Graphics.Trails;
 using AbyssalBlessings.Utilities.Extensions;
-using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Particles;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;
 using Terraria.Audio;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace AbyssalBlessings.Content.Projectiles.Typeless;
 
@@ -64,7 +55,7 @@ public class AbyssalOrb : ModProjectile
 
     public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) {
         SoundEngine.PlaySound(in HitSound, target.Center);
-        
+
         target.AddBuff(ModContent.BuffType<CrushDepth>(), 3 * 60);
     }
 
@@ -81,14 +72,14 @@ public class AbyssalOrb : ModProjectile
             UpdateDeath();
             return;
         }
-        
+
         UpdateOpacity();
         UpdateMovement();
     }
 
     public override bool PreDraw(ref Color lightColor) {
         var texture = ModContent.Request<Texture2D>(Texture).Value;
-        
+
         Main.EntitySpriteDraw(
             texture,
             Projectile.GetDrawPosition(),
@@ -99,11 +90,11 @@ public class AbyssalOrb : ModProjectile
             Projectile.scale,
             SpriteEffects.None
         );
-        
+
         PixellatedRenderer.Queue(
             () => {
                 var bloom = ModContent.Request<Texture2D>($"{nameof(AbyssalBlessings)}/Assets/Textures/Effects/Bloom").Value;
-        
+
                 Main.EntitySpriteDraw(
                     bloom,
                     Projectile.GetPixellatedDrawPosition(),
@@ -114,21 +105,21 @@ public class AbyssalOrb : ModProjectile
                     Projectile.scale * 0.4f,
                     SpriteEffects.None
                 );
-                
+
                 var trail = new DoubleColorTrail(
-                    Projectile, 
+                    Projectile,
                     new Color(220, 149, 0),
                     new Color(174, 84, 1),
                     static progress => MathHelper.Lerp(10f, 30f, progress)
                 );
-                
+
                 trail.Draw();
             }
         );
 
         return false;
     }
-    
+
     private void TriggerEffects() {
         for (var i = 0; i < 3; i++) {
             var particle = new GlowOrbParticle(
@@ -152,7 +143,7 @@ public class AbyssalOrb : ModProjectile
             Projectile.alpha -= 5;
         }
 
-        Projectile.alpha = (int)MathHelper.Clamp(Projectile.alpha, 0, 255);
+        Projectile.alpha = MathHelper.Clamp(Projectile.alpha, 0, 255);
     }
 
     private void UpdateDeath() {
@@ -163,10 +154,10 @@ public class AbyssalOrb : ModProjectile
         if (Projectile.alpha < 255) {
             return;
         }
-        
+
         Projectile.Kill();
     }
-    
+
     private void UpdateMovement() {
         if (Projectile.timeLeft > Lifespan - Charge) {
             Projectile.velocity *= 0.85f;

@@ -1,6 +1,3 @@
-using CalamityMod.Items.LoreItems;
-using Terraria.ModLoader;
-
 namespace AbyssalBlessings.Content.Items.Lore;
 
 public class PrimordialWyrmLore : LoreItem, ILocalizedModType

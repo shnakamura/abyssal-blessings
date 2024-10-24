@@ -1,6 +1,3 @@
-using Microsoft.Xna.Framework;
-using Terraria.ModLoader;
-
 namespace AbyssalBlessings.Content.Rarities;
 
 public sealed class Abyssal : ModRarity

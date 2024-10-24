@@ -1,17 +1,7 @@
-using AbyssalBlessings.Common.Graphics;
 using AbyssalBlessings.Common.Graphics.Renderers;
 using AbyssalBlessings.Common.Graphics.Trails;
 using AbyssalBlessings.Utilities.Extensions;
-using CalamityMod;
-using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Particles;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;
 using Terraria.Audio;
-using Terraria.Graphics;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace AbyssalBlessings.Content.Projectiles.Melee;
 
@@ -34,7 +24,7 @@ public class EidolicEdgeSoul : ModProjectile
     ///     The projectile's minimum distance in pixel units required for attacking.
     /// </summary>
     public const float MinAttackDistance = 32f * 16f;
-    
+
     /// <summary>
     ///     The sound played when the projectile hits an enemy.
     /// </summary>
@@ -53,7 +43,7 @@ public class EidolicEdgeSoul : ModProjectile
     ///     The projectile's inertia modifier assigned by the item.
     /// </summary>
     public ref float InertiaModifier => ref Projectile.ai[1];
-    
+
     public override void SetStaticDefaults() {
         ProjectileID.Sets.TrailingMode[Type] = 3;
         ProjectileID.Sets.TrailCacheLength[Type] = 25;
@@ -80,13 +70,13 @@ public class EidolicEdgeSoul : ModProjectile
         SoundEngine.PlaySound(in HitSound, target.Center);
 
         TriggerEffects();
-        
+
         target.AddBuff(ModContent.BuffType<CrushDepth>(), 3 * 60);
     }
 
     public override void OnHitPlayer(Player target, Player.HurtInfo info) {
         SoundEngine.PlaySound(in HitSound, target.Center);
-        
+
         TriggerEffects();
 
         target.AddBuff(ModContent.BuffType<CrushDepth>(), 3 * 60);
@@ -101,14 +91,14 @@ public class EidolicEdgeSoul : ModProjectile
         }
 
         var owner = Main.player[Projectile.owner];
-        
+
         UpdateMovement(owner);
         UpdateOpacity();
     }
 
     public override bool PreDraw(ref Color lightColor) {
         var texture = ModContent.Request<Texture2D>(Texture).Value;
-        
+
         Main.EntitySpriteDraw(
             texture,
             Projectile.GetDrawPosition(),
@@ -119,11 +109,11 @@ public class EidolicEdgeSoul : ModProjectile
             Projectile.scale,
             SpriteEffects.None
         );
-        
+
         PixellatedRenderer.Queue(
             () => {
                 var bloom = ModContent.Request<Texture2D>($"{nameof(AbyssalBlessings)}/Assets/Textures/Effects/Bloom").Value;
-        
+
                 Main.EntitySpriteDraw(
                     bloom,
                     Projectile.GetPixellatedDrawPosition(),
@@ -134,14 +124,14 @@ public class EidolicEdgeSoul : ModProjectile
                     Projectile.scale * 0.6f,
                     SpriteEffects.None
                 );
-                
+
                 var trail = new DoubleColorTrail(
-                    Projectile, 
+                    Projectile,
                     new Color(93, 203, 243),
                     new Color(72, 135, 205),
                     static progress => MathHelper.Lerp(10f, 100f, progress)
                 );
-    
+
                 trail.Draw();
             }
         );
@@ -172,18 +162,18 @@ public class EidolicEdgeSoul : ModProjectile
             Projectile.alpha -= 5;
         }
 
-        Projectile.alpha = (int)MathHelper.Clamp(Projectile.alpha, 0, 255);
+        Projectile.alpha = MathHelper.Clamp(Projectile.alpha, 0, 255);
     }
 
     private void UpdateDeath() {
         Projectile.velocity *= 0.9f;
-        
+
         Projectile.alpha += 5;
 
         if (Projectile.alpha < 255) {
             return;
         }
-        
+
         Projectile.Kill();
     }
 

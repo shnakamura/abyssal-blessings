@@ -1,11 +1,4 @@
 using AbyssalBlessings.Utilities.Extensions;
-using CalamityMod;
-using CalamityMod.Buffs.DamageOverTime;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace AbyssalBlessings.Content.Projectiles.Rogue;
 
@@ -15,7 +8,7 @@ public class PrimordialReaper : ModProjectile
         ProjectileID.Sets.TrailingMode[Type] = 3;
         ProjectileID.Sets.TrailCacheLength[Type] = 25;
     }
-    
+
     public override void SetDefaults() {
         Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
 
@@ -39,7 +32,7 @@ public class PrimordialReaper : ModProjectile
 
     public override bool PreDraw(ref Color lightColor) {
         var texture = ModContent.Request<Texture2D>(Texture).Value;
-        
+
         Main.EntitySpriteDraw(
             texture,
             Projectile.GetDrawPosition(),
@@ -50,7 +43,7 @@ public class PrimordialReaper : ModProjectile
             Projectile.scale,
             SpriteEffects.None
         );
-        
+
         return false;
     }
 }

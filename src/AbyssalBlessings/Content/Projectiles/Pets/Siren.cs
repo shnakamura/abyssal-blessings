@@ -1,8 +1,3 @@
-using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-
 namespace AbyssalBlessings.Content.Projectiles.Pets;
 
 public class Siren : ModProjectile
@@ -32,7 +27,7 @@ public class Siren : ModProjectile
     }
 
     public override void AI() {
-        Projectile.alpha = (int)MathHelper.Clamp(Projectile.alpha, 0, 255);
+        Projectile.alpha = MathHelper.Clamp(Projectile.alpha, 0, 255);
 
         Projectile.rotation = Projectile.velocity.X * 0.1f;
 

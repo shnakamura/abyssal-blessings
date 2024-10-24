@@ -1,12 +1,4 @@
-using AbyssalBlessings.Content.Projectiles.Melee;
-using CalamityMod.Items;
-using CalamityMod.Items.Materials;
-using CalamityMod.Rarities;
-using Microsoft.Xna.Framework;
-using Terraria;
 using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace AbyssalBlessings.Content.Items.Weapons.Melee;
 

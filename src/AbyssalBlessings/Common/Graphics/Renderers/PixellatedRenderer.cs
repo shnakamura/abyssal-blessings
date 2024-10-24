@@ -1,9 +1,4 @@
-using System;
 using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;
-using Terraria.ModLoader;
 
 namespace AbyssalBlessings.Common.Graphics.Renderers;
 
@@ -14,7 +9,7 @@ namespace AbyssalBlessings.Common.Graphics.Renderers;
 public sealed class PixellatedRenderer : ModSystem
 {
     private static List<Action> Actions { get; } = new();
-    
+
     /// <summary>
     ///     The render target used for drawing pixellated content.
     /// </summary>
@@ -27,17 +22,17 @@ public sealed class PixellatedRenderer : ModSystem
     public override void Load() {
         Main.RunOnMainThread(
             () => {
-                Target = new(
+                Target = new RenderTarget2D(
                     Main.graphics.GraphicsDevice,
                     Main.screenWidth / 2,
                     Main.screenHeight / 2
                 );
             }
         );
-        
+
         On_Main.DrawProjectiles += (orig, self) => {
             DrawTarget();
-            
+
             orig(self);
         };
 
@@ -46,7 +41,7 @@ public sealed class PixellatedRenderer : ModSystem
 
     public override void Unload() {
         Main.OnResolutionChanged -= ResizeTarget;
-        
+
         Main.RunOnMainThread(() => Target?.Dispose());
     }
 
@@ -57,20 +52,20 @@ public sealed class PixellatedRenderer : ModSystem
 
         device.SetRenderTarget(Target);
         device.Clear(Color.Transparent);
-        
+
         Main.spriteBatch.Begin(SpriteSortMode.Texture, BlendState.AlphaBlend);
 
         foreach (var action in Actions) {
             action?.Invoke();
         }
-        
+
         Main.spriteBatch.End();
-        
+
         device.SetRenderTargets(bindings);
 
         Actions.Clear();
     }
-    
+
     /// <summary>
     ///     Queues an action to be executed during the next rendering update.
     /// </summary>
@@ -84,7 +79,7 @@ public sealed class PixellatedRenderer : ModSystem
             () => {
                 Target?.Dispose();
 
-                Target = new(
+                Target = new RenderTarget2D(
                     Main.graphics.GraphicsDevice,
                     (int)(size.X / 2f),
                     (int)(size.Y / 2f)

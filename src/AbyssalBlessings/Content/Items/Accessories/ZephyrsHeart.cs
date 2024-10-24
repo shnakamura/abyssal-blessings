@@ -1,7 +1,4 @@
 using AbyssalBlessings.Content.Buffs;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace AbyssalBlessings.Content.Items.Accessories;
 

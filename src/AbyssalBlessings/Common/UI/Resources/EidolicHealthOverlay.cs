@@ -1,10 +1,7 @@
 using System.Collections.Generic;
 using AbyssalBlessings.Common.Players;
-using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
-using Terraria;
 using Terraria.GameContent;
-using Terraria.ModLoader;
 
 namespace AbyssalBlessings.Common.UI.Resources;
 

@@ -1,9 +1,5 @@
 using System.IO;
 using AbyssalBlessings.Common.Players;
-using Terraria;
-using Terraria.ID;
-using AbyssalBlessings.Content.Items.Consumables;
-using Terraria.ModLoader;
 
 namespace AbyssalBlessings;
 

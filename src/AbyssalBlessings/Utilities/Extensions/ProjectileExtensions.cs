@@ -1,6 +1,4 @@
 using System.Runtime.CompilerServices;
-using Microsoft.Xna.Framework;
-using Terraria;
 using Terraria.GameContent;
 
 namespace AbyssalBlessings.Utilities.Extensions;

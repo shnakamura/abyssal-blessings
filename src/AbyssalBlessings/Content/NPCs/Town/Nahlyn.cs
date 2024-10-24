@@ -1,23 +1,8 @@
 using System.Collections.Generic;
 using AbyssalBlessings.Content.Items.Accessories;
 using AbyssalBlessings.Content.Items.Weapons.Melee;
-using CalamityMod;
-using CalamityMod.Items.Accessories;
-using CalamityMod.Items.Materials;
-using CalamityMod.Items.Potions;
-using CalamityMod.Items.Weapons.Magic;
-using CalamityMod.Items.Weapons.Melee;
-using CalamityMod.Items.Weapons.Ranged;
-using CalamityMod.Items.Weapons.Rogue;
-using CalamityMod.Items.Weapons.Summon;
-using CalamityMod.NPCs.TownNPCs;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.Personalities;
-using Terraria.ID;
-using Terraria.ModLoader;
 using Terraria.Utilities;
 
 namespace AbyssalBlessings.Content.NPCs.Town;
